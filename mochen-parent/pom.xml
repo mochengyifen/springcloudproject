@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>mochen-api</module>
+        <module>mochen-consumer-dept-80</module>
+        <module>mochen-consumer-dept-feign</module>
+        <module>mochen-eureka-7001</module>
+        <module>mochen-eureka-7002</module>
+        <module>mochen-eureka-7003</module>
+        <module>mochen-provider-dept-8001</module>
+        <module>mochen-zuul-geteway-9527</module>
+    </modules>
+
+    <groupId>com.mochen</groupId>
+    <artifactId>mochen-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>mochen-parent</name>
+
+    <properties>
+        <!--指定编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--指定jdk版本-->
+        <java.version>1.8</java.version>
+        <druid-spring-boot-starter.version>1.1.10</druid-spring-boot-starter.version>
+        <org.mybatis.spring.boot.version>2.1.1</org.mybatis.spring.boot.version>
+        <io.springfox.version>2.7.0</io.springfox.version>
+        <com.aliyun.core.version>4.0.6</com.aliyun.core.version>
+        <com.aliyun.dysmsapi.version>1.1.0</com.aliyun.dysmsapi.version>
+        <alipay.version>3.0.0</alipay.version>
+        <org.jdom.version>1.1.3</org.jdom.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <com.google.zxing.version>3.0.0</com.google.zxing.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <httpclient.version>4.4.1</httpclient.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <junit.version>4.12</junit.version>
+        <alibaba.version>1.2.15</alibaba.version>
+        <com.google.code.gson.version>2.8.2</com.google.code.gson.version>
+        <joda-time.version>2.5</joda-time.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-net.version>3.3</commons-net.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.6.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+
+            <!--mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${org.mybatis.spring.boot.version}</version>
+            </dependency>
+
+
+            <!-- Druid 连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+
+            <!-- 短信接口 -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${com.aliyun.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+                <version>${com.aliyun.dysmsapi.version}</version>
+            </dependency>
+
+            <!--支付宝支付-->
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>${alipay.version}</version>
+            </dependency>
+
+            <!--微信支付-->
+            <dependency>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>${org.jdom.version}</version>
+            </dependency>
+
+            <!--用于读写xml文件-->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+
+            <!--用于生成二维码-->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${com.google.zxing.version}</version>
+            </dependency>
+
+            <!-- 文件上传组件 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+
+            <!-- httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+
+            <!-- 单元测试 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- fastjson  json转换-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${alibaba.version}</version>
+            </dependency>
+
+            <!--google json转换-->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${com.google.code.gson.version}</version>
+            </dependency>
+
+            <!-- 时间操作组件 -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <!-- Apache工具组件 -->
+            <!--java工具类，封装了非空判断等等-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!--封装了io操作-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <!--封装了网络协议的客户端-->
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
