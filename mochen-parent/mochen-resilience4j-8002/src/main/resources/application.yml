@@ -1,0 +1,55 @@
+server:
+  port: 8010
+
+
+feign:
+  hystrix:
+    enabled: true
+
+
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+resilience4j.retry:
+  retryAspectOrder: 399
+  backends:
+    retryBackendA:
+      maxRetryAttempts: 3
+      waitDuration: 600
+      eventConsumerBufferSize: 1
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      enableRandomizedWait: false
+      randomizedWaitFactor: 2
+      retryExceptionPredicate: com.mochen.exception.RecordFailurePredicate
+      retryExceptions:
+        - java.io.IOException
+      ignoreExceptions:
+        - com.mochen.exception.IgnoredException
+resilience4j.circuitbreaker:
+  backends:
+    backendA:
+      ringBufferSizeInClosedState: 5
+      ringBufferSizeInHalfOpenState: 3
+      waitInterval: 5000
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+      registerHealthIndicator: true
+      recordFailurePredicate: com.mochen.exception.RecordFailurePredicate
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+      ignoreExceptions:
+        - org.springframework.web.client.HttpClientErrorException
+resilience4j.ratelimiter:
+  limiters:
+    backendB:
+      limitForPeriod: 1
+      limitRefreshPeriodInMillis: 5000
+      timeoutInMillis: 5000
+      subscribeForEvents: true
+      registerHealthIndicator: true
+      eventConsumerBufferSize: 100
